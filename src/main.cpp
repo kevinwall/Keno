@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include "../include/gamemanager.h"
+//#include "../include/gamemanager.h"
 
 int main(int argc, char const *argv[])
 {
@@ -25,7 +25,13 @@ int main(int argc, char const *argv[])
 
 	while( oss.empty()){
 		oss >> A[i];
-		i++
+		i++;
+	}
+
+	std::cout << "Dinheiro:" << money << "\n";
+	std::cout << "Numero de apostas:" << number_of_bet << "\n";
+	for( auto j = 0 ; j < i ; j++){
+		std::cout << "Apostas:" << A[j] << " ";
 	}
 
 	return 0;
