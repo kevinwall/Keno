@@ -1,30 +1,65 @@
-#include "../include/gamemanager.h"
+#include "keno.h"
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <sstream>
 
-
-class keno
+keno::keno()
 {
 
-public:
-	keno(){
+	int num = 1;
 
-		int num = 1;
+	keno_table = new int[80];
 
-		keno_table = new int*[8];
+	for( auto i = 0; i < 80; i++)
+	{
+		keno_table[i] = num++;
+	}
+}
 
-		for( auto i = 0; i < 8; i++){
-			keno_table[i] = new int[10]; 
-		}
+keno::~keno(){
+	delete [] keno_table;
+}
 
-		for(auto i = 0 ; i <= 8; i++){
-			for( auto j = 0 ; j <= 10; j++){
-				keno_table[i][j] = num++;
-			}
-		}
+
+int main()
+{
+	keno k;
+	std::string string1, string2;
+	std::ifstream file("Blank.txt");
+	std::stringstream oss;
+	int i;
+	
+	std::getline(file, string1);
+	std::cout<<string1<<std::endl;
+	std::getline(file, string1);
+	std::cout<<string1<<std::endl;
+
+	oss.str(string1);
+
+	oss >> i;
+
+	if(oss.fail())
+	{
+		std::cout<<i<<std::endl;
+		std::cout<<"Falhou"<<std::endl;
 	}
 
-	~keno(){
-		delete [] keno_table;
+	oss.clear();
+	std::getline(file, string1);
+	oss.str(string1);
+	oss>>i;
+	std::cout<<i<<std::endl;
+	if(oss.fail())
+	{
+		
+		std::cout<<"Falhou"<<std::endl;
 	}
 
 
-};
+	string2 = " ";
+
+	std::cout<<"Comparação: "<<string1.compare(string2)<<std::endl;
+
+	return 0;
+}

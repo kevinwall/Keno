@@ -1,20 +1,17 @@
 #ifndef KENO_H_
 #define KENO_H_
 
-#include "gamemanager.h"
-
 class keno
 {
 private :
-	int **keno_table;
+	// Vetor responsável por gerar os números escolhidos.
+	int *keno_table;
+	// Vetor responsável por guardar os números escolhidos.
+	int *keno_chosen;
 public:
 	keno();
+
 	~keno();
-
-friend std::ostream& operator<<( std::ostream& os, const keno & keno_){
-
-
-}
 
 };
 #endif
