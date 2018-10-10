@@ -5,6 +5,8 @@
 //#include "../include/gamemanager.h"
 //#include "keno.h"
 
+int* unique (int *first, int *last);
+
 int main(int argc, char const *argv[])
 {
 	std::ifstream file(argv[1]);
@@ -49,7 +51,8 @@ int main(int argc, char const *argv[])
 	getline(file,string);
 	oss.str(string);
 
-	int A[15], i = 0;
+	int i = 0;
+	int *A = new int[15];
 
 	while(! (oss >> dummy) )
 	{
@@ -64,7 +67,7 @@ int main(int argc, char const *argv[])
 	while(oss>>A[i])
 	{
 		i++;
-		
+
 		if(i > 14)
 		{
 			break;
@@ -82,5 +85,49 @@ int main(int argc, char const *argv[])
 	}
 	std::cout <<"]"<<std::endl;
 
+	auto last = unique(A, A+i+1);
+
+	std::cout<<"Vetor de apostas: [ ";
+	for(auto j{A}; j < last; j++)
+	{
+		std::cout << *j << " ";
+	}
+	std::cout <<"]"<<std::endl;
+
 	return 0;
+}
+
+int * unique (int * first, int * last)
+{
+	int aux;
+	last--;
+	int *slow = last;
+	bool flag;
+
+	while(first != last)
+	{
+		auto fast = first;
+		flag = false;
+
+		while(fast != last or fast > last)
+		{
+			if(*first == *fast and first != fast)
+			{
+				aux = *fast;
+				*fast = *(fast+1);
+				*(fast+1) = aux;
+				flag = true;
+			}	
+			fast++;
+		}
+
+		if(flag == true)
+		{
+			slow--;
+		}
+		first++;
+	}
+
+	return slow;
+
 }
