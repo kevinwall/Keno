@@ -26,7 +26,7 @@ void keno::shuffle_keno(){
 	std::shuffle( keno_table+1,
 					 keno_table+80, std::default_random_engine(seed));
 
-	for( auto i = 0 ; i < 20 ; i++){
+	for( auto i = 0 ; i < 15 ; i++){
 		keno_chosen[i] = keno_table[i];
 	}
 
@@ -34,7 +34,7 @@ void keno::shuffle_keno(){
 		std::cout << keno_table[i] << " ";
 	}
 	std::cout << std::endl;
-	for( auto i = 0; i < 20 ; i++){
+	for( auto i = 0; i < 15 ; i++){
 		std::cout << keno_chosen[i] << " ";
 	}
 
