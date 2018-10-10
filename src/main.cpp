@@ -64,6 +64,11 @@ int main(int argc, char const *argv[])
 	while(oss>>A[i])
 	{
 		i++;
+		
+		if(i > 14)
+		{
+			break;
+		}
 	}
 
 	std::cout << "Dinheiro: " << money << "\n";
