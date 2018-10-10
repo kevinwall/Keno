@@ -1,4 +1,4 @@
-#include "../include.gamemanager.h"
+#include "../include/gamemanager.h"
 
 void gamemanager::unique ( int A[]){
 	

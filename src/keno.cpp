@@ -1,8 +1,4 @@
-#include "keno.h"
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <sstream>
+#include "../include/keno.h"
 
 keno::keno()
 {
@@ -15,11 +11,36 @@ keno::keno()
 	{
 		keno_table[i] = num++;
 	}
+
+	keno_chosen = new int[20];
 }
 
 keno::~keno(){
 	delete [] keno_table;
+	delete [] keno_chosen;
 }
+
+void keno::shuffle_keno(){
+
+	 unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();	
+	std::shuffle( keno_table+1,
+					 keno_table+80, std::default_random_engine(seed));
+
+	for( auto i = 0 ; i < 20 ; i++){
+		keno_chosen[i] = keno_table[i];
+	}
+
+	for( auto i = 0; i < 80 ; i++){
+		std::cout << keno_table[i] << " ";
+	}
+	std::cout << std::endl;
+	for( auto i = 0; i < 20 ; i++){
+		std::cout << keno_chosen[i] << " ";
+	}
+
+}
+
+
 
 
 int main()
@@ -56,10 +77,11 @@ int main()
 		std::cout<<"Falhou"<<std::endl;
 	}
 
+	k.shuffle_keno();
 
-	string2 = " ";
+	// string2 = " ";
 
-	std::cout<<"Comparação: "<<string1.compare(string2)<<std::endl;
+	// std::cout<<"Comparação: "<<string1.compare(string2)<<std::endl;
 
 	return 0;
 }

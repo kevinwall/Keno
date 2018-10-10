@@ -1,6 +1,16 @@
 #ifndef KENO_H_
 #define KENO_H_
 
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <algorithm>
+#include <sstream>
+#include <iterator>
+#include <random>       // std::default_random_engine
+#include <chrono>       // std::chrono::system_clock
+
+
 class keno
 {
 private :
@@ -12,6 +22,8 @@ public:
 	keno();
 
 	~keno();
+
+	void shuffle_keno();
 
 };
 #endif
