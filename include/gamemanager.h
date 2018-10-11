@@ -8,14 +8,47 @@
 
 class gamemanager{
 public:
-
+	/**
+	*@brief Função que compara os numeros sorteados e os números apostados pelo jogador
+	*@param objeto da classe de jogador 
+	*@param e objeto da classe keno(do jogo)
+	*@return o número de acertos feito pelo jogador
+	*/
 	int comparate_bet( Player& player_, keno& keno_);
+	/**
+	*@brief Função de busca linear que pega os numeros do jogador e busca no vetor de numeros sorteados
+	*@param numero escolhido pelo jogador
+	*@param ranged do vetor de numeros sorteados
+	*@return retorna true caso tenha pelo menos um acerto e false se haver nenhum
+	*/
 	bool linear_search_keno( int n , const int * , const int * );
+	/**
+	*@brief Função que calcula o saldo da rodada em questão
+	*@param objeto da classe de jogador 
+	*@param e objeto da classe keno(do jogo)
+	*/
 	void balance( Player& player_, keno& keno_);
+	/**
+	*@brief Função que calcula o saldo total
+	*@param objeto da classe de jogador 
+	*@param numero de apostas
+	*/
 	void get_bet_money(Player& player_, int number_of_bet);
+	/**
+	*@brief Função auxiliar de odernação
+	*@param o ponteiro que aponta para as apostas
+	*@param o tamanho do vetor de apostas
+	*/
 	void qsort( int* bet, size_t count);
+	/**
+	*@brief Função que imprime a tabela do jogo
+	*@param objeto da classe de jogador 
+	*/
 	void print_table(Player& player_);
 private:
+	/**
+	*@brief Vector com os multiplicadores de apostas de acordo com os acertos
+	*/
 	std::vector<std::vector<float>> payout_table = {
 		{ 0,   3 }, // 1 spot
         { 0,   1,   9 }, // 2 spots
