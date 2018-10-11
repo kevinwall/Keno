@@ -19,6 +19,10 @@ Player::~Player()
 	delete [] bet_numbers;
 }
 
+size_t Player::get_size(){
+	return size;
+}
+
 float Player::get_money()
 {
 	return money;

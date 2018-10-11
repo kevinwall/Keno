@@ -17,6 +17,8 @@ class Player
 
 		const int * get_bet();
 
+		size_t size();
+
 	private:
 		int *bet_numbers;
 		size_t size;

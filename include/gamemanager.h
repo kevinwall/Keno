@@ -8,6 +8,7 @@ public:
 
 	int comparate_bet( Player player_, keno keno_);
 	bool linear_search_keno( int n , int * , int * );
+	float balance( Player player_, keno keno_, int number_of_bet);
 private:
 	float * payout_table = {{ 0,   3 }, // 1 spot
         { 0,   1,   9 }, // 2 spots
