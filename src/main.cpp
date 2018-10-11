@@ -60,7 +60,7 @@ int main(int argc, char const *argv[])
 
 	auto wage = money/number_of_bet;
 
-	std::cout << " Bet successfully read!" << std::endl << 
+	std::cout << "Bet successfully read!" << std::endl<<std::endl << 
 				   "You are going to wage a total of $ " << money << " dollars." << std::endl 
 				   << "Going for a total of " << number_of_bet << " rounds, waging $"
 				   << wage << " per round."<< std::endl << "Your bet has " << player_1.get_size()

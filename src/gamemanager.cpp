@@ -59,7 +59,7 @@ void gamemanager::balance( Player& player_  , keno& keno_){
 
 	player_.set_money(player_.get_money() + balance_);
 
-	std::cout<<"Your net balance so far is: $"<<player_.get_money()<<" dollars."<<std::endl;
+	std::cout<<"Your net balance so far is: $"<<player_.get_money()<<" dollars."<<std::endl<<std::endl;
 
 }
 
