@@ -33,22 +33,11 @@ int main(int argc, char const *argv[])
 
 	reader_file( file,  A,  money, number_of_bet, i);
 
-	//std::cout << "Dinheiro: " << money << "\n";
-	//std::cout << "Numero de apostas: " << number_of_bet << "\n";
-
-	
-
 	auto last = unique(A, A+i+1);
-
-	//std::cout<<"Tamanho de size: "<<last-A<<std::endl;
 
 	qsort( A, last);
 
 	Player player_1(A, last-A, money);
-
-	//player_1.print_bet();
-
-	//std::cout<<"Seu Dinheiro atual é: "<<player_1.get_money()<<std::endl;
 
 	keno game;
 
@@ -63,7 +52,7 @@ int main(int argc, char const *argv[])
 	std::cout << "Bet successfully read!" << std::endl<<std::endl << 
 				   "You are going to wage a total of $ " << money << " dollars." << std::endl 
 				   << "Going for a total of " << number_of_bet << " rounds, waging $"
-				   << wage << " per round."<< std::endl << "Your bet has " << player_1.get_size()
+				   << wage << " per round."<< std::endl << "Your bet has " << player_1.get_size()+1
 				   << " numbers. They are:";
 	player_1.print_bet();
 
@@ -87,11 +76,9 @@ int main(int argc, char const *argv[])
 
 		game.shuffle_keno();
 
-	//player_1.set_money(player_1.get_money()+lucro);
-
-	//std::cout<<"Seu Dinheiro atual é: "<<player_1.get_money()<<std::endl;
-
 	}
+
+	delete [] A;
 
 	return 0;
 }

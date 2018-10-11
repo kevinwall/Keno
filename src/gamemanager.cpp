@@ -28,7 +28,7 @@ int gamemanager::comparate_bet ( Player& player_, keno& keno_){
 		{
 			std::cout<<p_hits[i]<<" ";
 		} 
-		std::cout<<"] a total of "<<hints<<" hits out of "<<player_.get_size()<<std::endl<<std::endl;
+		std::cout<<"] a total of "<<hints<<" hits out of "<<player_.get_size()+1<<std::endl<<std::endl;
 	}
 	else
 	{
@@ -74,14 +74,14 @@ void gamemanager::print_table(Player& player_)
 	auto size = player_.get_size();
 
 	std::cout<<"Hits:   ";
-	for(size_t i{0}; i <= size; i++)
+	for(size_t i{0}; i <= size+1; i++)
 	{
 		std::cout<<i<<" ";
 	}
 	std::cout<<std::endl;
 
 	std::cout<<"Payout: ";
-	for(size_t i{0}; i < size; i++)
+	for(size_t i{0}; i <= size+1; i++)
 	{
 		std::cout<<payout_table[size][i]<<" ";
 	}

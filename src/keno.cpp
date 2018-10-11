@@ -1,5 +1,6 @@
 #include "../include/keno.h"
 
+// Construtor simples que aloca dinamicamente os dois vetores e inicializa o keno_table.
 keno::keno()
 {
 
@@ -15,11 +16,13 @@ keno::keno()
 	keno_chosen = new int[20];
 }
 
+// Destrutor que deleta os vetores dinamicamente alocados
 keno::~keno(){
 	delete [] keno_table;
 	delete [] keno_chosen;
 }
 
+// Função que embaralha o vetor keno_table para depois retirarmos os números do sorteio atual
 void keno::shuffle_keno(){
 
 	 unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();	
@@ -31,62 +34,10 @@ void keno::shuffle_keno(){
 	}
 	qsort( keno_chosen, keno_chosen+20);
 
-	//std::cout << "Numeros escolhidos [ ";
-
-	//for( auto i = 0 ; i < 20 ; i++){
-	//std::cout << keno_chosen[i] << " ";
-	//}
-
-	//std::cout << "]" << "\n";
-
 }
 
+// Função que retorna uma referência constante para o vetor de escolhidos.
 const int * keno::get_chosen()
 {
 	return keno_chosen;
 }
-
-/*
-int main()
-{
-	keno k;
-	std::string string1, string2;
-	std::ifstream file("Blank.txt");
-	std::stringstream oss;
-	int i;
-	
-	std::getline(file, string1);
-	std::cout<<string1<<std::endl;
-	std::getline(file, string1);
-	std::cout<<string1<<std::endl;
-
-	oss.str(string1);
-
-	oss >> i;
-
-	if(oss.fail())
-	{
-		std::cout<<i<<std::endl;
-		std::cout<<"Falhou"<<std::endl;
-	}
-
-	oss.clear();
-	std::getline(file, string1);
-	oss.str(string1);
-	oss>>i;
-	std::cout<<i<<std::endl;
-	if(oss.fail())
-	{
-		
-		std::cout<<"Falhou"<<std::endl;
-	}
-
-	k.shuffle_keno();
-
-	// string2 = " ";
-
-	// std::cout<<"Comparação: "<<string1.compare(string2)<<std::endl;
-
-	return 0;
-}
-*/

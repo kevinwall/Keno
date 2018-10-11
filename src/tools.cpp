@@ -96,7 +96,7 @@ void reader_file( std::ifstream& file, int * & A, float & money, int& number_of_
 		oss.str(string);
 	}
 
-	if(dummy > 1 and dummy < 80)
+	if(dummy > 0 and dummy < 81)
 	{
 		A[i] = dummy;
 		i++;
@@ -105,7 +105,7 @@ void reader_file( std::ifstream& file, int * & A, float & money, int& number_of_
 
 	while(oss>>A[i])
 	{
-		if(A[i] < 80 and A[i] > 1)
+		if(A[i] < 81 and A[i] > 0)
 		{
 			i++;
 
