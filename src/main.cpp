@@ -33,20 +33,14 @@ int main(int argc, char const *argv[])
 
 	reader_file( file,  A,  money, number_of_bet, i);
 
-	std::cout << "Dinheiro: " << money << "\n";
-	std::cout << "Numero de apostas: " << number_of_bet << "\n";
+	//std::cout << "Dinheiro: " << money << "\n";
+	//std::cout << "Numero de apostas: " << number_of_bet << "\n";
 
-	std::cout<<"Vetor de apostas: [ ";
-
-	for(auto j{0}; j < i; j++)
-	{
-		std::cout << A[j] << " ";
-	}
-	std::cout <<"]"<<std::endl;
+	
 
 	auto last = unique(A, A+i+1);
 
-	std::cout<<"Tamanho de size: "<<last-A<<std::endl;
+	//std::cout<<"Tamanho de size: "<<last-A<<std::endl;
 
 	qsort( A, last);
 
@@ -54,7 +48,7 @@ int main(int argc, char const *argv[])
 
 	//player_1.print_bet();
 
-	std::cout<<"Seu Dinheiro atual é: "<<player_1.get_money()<<std::endl;
+	//std::cout<<"Seu Dinheiro atual é: "<<player_1.get_money()<<std::endl;
 
 	keno game;
 
@@ -77,6 +71,8 @@ int main(int argc, char const *argv[])
 
 	for(auto k{0}; k < number_of_bet; k++)
 	{
+		player_1.set_money(player_1.get_money() - wage);
+
 		std::cout<<"This is round #"<<k+1<<" of "<<number_of_bet<<", and your wage is $"<<wage<<". Good luck!"<<std::endl;
 
 		auto result = game.get_chosen();

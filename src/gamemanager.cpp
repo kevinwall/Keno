@@ -30,6 +30,10 @@ int gamemanager::comparate_bet ( Player& player_, keno& keno_){
 		} 
 		std::cout<<"] a total of "<<hints<<" hits out of "<<player_.get_size()<<std::endl<<std::endl;
 	}
+	else
+	{
+		std::cout<<"Sorry, you did't hit any number, better luck next time"<<std::endl<<std::endl;
+	}
 
 	return hints;
 }
@@ -53,7 +57,9 @@ void gamemanager::balance( Player& player_  , keno& keno_){
 
 	std::cout<<"Payout rate is "<<balance_mult<<", thus you came out with: $"<<balance_<<std::endl<<std::endl;
 
-	std::cout<<"Dinheiro atual: "<<player_.get_money()<<std::endl;
+	player_.set_money(player_.get_money() + balance_);
+
+	std::cout<<"Your net balance so far is: $"<<player_.get_money()<<" dollars."<<std::endl;
 
 }
 
