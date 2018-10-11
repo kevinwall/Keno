@@ -4,6 +4,7 @@
 #include <sstream>
 //#include "../include/gamemanager.h"
 //#include "keno.h"
+#include "Player.h"
 
 int* unique (int *first, int *last);
 
@@ -87,12 +88,11 @@ int main(int argc, char const *argv[])
 
 	auto last = unique(A, A+i+1);
 
-	std::cout<<"Vetor de apostas: [ ";
-	for(auto j{A}; j < last; j++)
-	{
-		std::cout << *j << " ";
-	}
-	std::cout <<"]"<<std::endl;
+	Player player_1(A, last-A, money);
+
+	player_1.print_bet();
+
+	std::cout<<"Seu Dinheiro atual é: "<<player_1.get_money()<<std::endl;
 
 	return 0;
 }
