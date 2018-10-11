@@ -3,8 +3,9 @@
 #include <string>
 #include <sstream>
 //#include "../include/gamemanager.h"
-//#include "keno.h"
+#include "keno.h"
 #include "Player.h"
+#include "gamemanager.h"
 
 int* unique (int *first, int *last);
 
@@ -88,9 +89,25 @@ int main(int argc, char const *argv[])
 
 	auto last = unique(A, A+i+1);
 
+	std::cout<<"Tamanho de size: "<<last-A<<std::endl;
+
 	Player player_1(A, last-A, money);
 
 	player_1.print_bet();
+
+	std::cout<<"Seu Dinheiro atual é: "<<player_1.get_money()<<std::endl;
+
+	keno game;
+
+	gamemanager mng;
+
+	game.shuffle_keno();
+
+	mng.get_bet_money(player_1, number_of_bet);
+
+	auto lucro = mng.balance(player_1, game);
+
+	player_1.set_money(player_1.get_money()+lucro);
 
 	std::cout<<"Seu Dinheiro atual é: "<<player_1.get_money()<<std::endl;
 

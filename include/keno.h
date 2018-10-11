@@ -25,5 +25,7 @@ public:
 
 	void shuffle_keno();
 
+	const int * get_chosen();
+
 };
 #endif

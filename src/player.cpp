@@ -28,7 +28,7 @@ float Player::get_money()
 	return money;
 }
 
-void Player::set_money(float& money)
+void Player::set_money(float money)
 {
 	this->money = money;
 }
