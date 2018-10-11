@@ -16,7 +16,7 @@ class Player
 
 		void print_bet();
 
-		const int * get_bet();
+		int * get_bet();
 
 		size_t get_size();
 

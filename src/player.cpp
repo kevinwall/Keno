@@ -35,7 +35,7 @@ void Player::set_money(float money)
 
 void Player::print_bet()
 {
-	std::cout<<"Sua aposta é: [ ";
+	std::cout<<" [ ";
 	for(size_t i{0}; i < size; i++)
 	{
 		std::cout<<bet_numbers[i]<<" ";
@@ -43,7 +43,7 @@ void Player::print_bet()
 	std::cout<<"]"<<std::endl;
 }
 
-const int * Player::get_bet()
+int * Player::get_bet()
 {
 	return bet_numbers;
 }

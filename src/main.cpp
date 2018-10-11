@@ -4,6 +4,7 @@
 #include <sstream>
 //#include "../include/gamemanager.h"
 #include "keno.h"
+#include "tools.h"
 #include "Player.h"
 #include "gamemanager.h"
 
@@ -11,70 +12,26 @@ int* unique (int *first, int *last);
 
 int main(int argc, char const *argv[])
 {
-	std::ifstream file(argv[1]);
-	std::string string;
+	
+	int * A = new int[15];
 	float money;
-	int number_of_bet, dummy;
+	int number_of_bet;
 
 	if( argc != 2){
 		std::cerr << " Número de argumentos invalidos\n";
 		return 0;
 	}
 
+	std::ifstream file(argv[1]);
+
+	int i = 0;
+
 	if(!file.is_open()){
 		std::cerr << " Arquivo vazio\n";
 		return 0;	
 	}
 
-	getline(file,string);
-	std::stringstream oss(string); 
-
-	while(! (oss >> money))
-	{
-		oss.clear();
-		getline(file,string);
-		oss.str(string);
-	}
-
-	oss.clear();
-
-	getline(file,string);
-	oss.str(string);
-	
-	while(! (oss >> number_of_bet))
-	{
-		oss.clear();
-		getline(file,string);
-		oss.str(string);
-	}
-
-	oss.clear();
-
-	getline(file,string);
-	oss.str(string);
-
-	int i = 0;
-	int *A = new int[15];
-
-	while(! (oss >> dummy) )
-	{
-		oss.clear();
-		getline(file,string);
-		oss.str(string);
-	}
-
-	A[i] = dummy;
-	i++;
-
-	while(oss>>A[i])
-	{
-		i++;
-
-		if(i > 14)
-		{
-			break;
-		}
-	}
+	reader_file( file,  A,  money, number_of_bet, i);
 
 	std::cout << "Dinheiro: " << money << "\n";
 	std::cout << "Numero de apostas: " << number_of_bet << "\n";
@@ -91,9 +48,11 @@ int main(int argc, char const *argv[])
 
 	std::cout<<"Tamanho de size: "<<last-A<<std::endl;
 
+	qsort( A, last);
+
 	Player player_1(A, last-A, money);
 
-	player_1.print_bet();
+	//player_1.print_bet();
 
 	std::cout<<"Seu Dinheiro atual é: "<<player_1.get_money()<<std::endl;
 
@@ -105,46 +64,39 @@ int main(int argc, char const *argv[])
 
 	mng.get_bet_money(player_1, number_of_bet);
 
-	auto lucro = mng.balance(player_1, game);
+	auto wage = money/number_of_bet;
 
-	player_1.set_money(player_1.get_money()+lucro);
+	std::cout << " Bet successfully read!" << std::endl << 
+				   "You are going to wage a total of $ " << money << " dollars." << std::endl 
+				   << "Going for a total of " << number_of_bet << " rounds, waging $"
+				   << wage << " per round."<< std::endl << "Your bet has " << player_1.get_size()
+				   << " numbers. They are:";
+	player_1.print_bet();
 
-	std::cout<<"Seu Dinheiro atual é: "<<player_1.get_money()<<std::endl;
+	mng.print_table(player_1);
+
+	for(auto k{0}; k < number_of_bet; k++)
+	{
+		std::cout<<"This is round #"<<k+1<<" of "<<number_of_bet<<", and your wage is $"<<wage<<". Good luck!"<<std::endl;
+
+		auto result = game.get_chosen();
+		std::cout<<"The hits are: [";
+		for(auto cs{0}; cs < 20; cs++)
+		{
+			std::cout<<result[cs]<<" ";
+		}
+		std::cout<<"]"<<std::endl;
+
+		mng.balance(player_1, game);
+
+		game.shuffle_keno();
+
+	//player_1.set_money(player_1.get_money()+lucro);
+
+	//std::cout<<"Seu Dinheiro atual é: "<<player_1.get_money()<<std::endl;
+
+	}
 
 	return 0;
 }
 
-int * unique (int * first, int * last)
-{
-	int aux;
-	last--;
-	int *slow = last;
-	bool flag;
-
-	while(first != last)
-	{
-		auto fast = first;
-		flag = false;
-
-		while(fast != last or fast > last)
-		{
-			if(*first == *fast and first != fast)
-			{
-				aux = *fast;
-				*fast = *(fast+1);
-				*(fast+1) = aux;
-				flag = true;
-			}	
-			fast++;
-		}
-
-		if(flag == true)
-		{
-			slow--;
-		}
-		first++;
-	}
-
-	return slow;
-
-}

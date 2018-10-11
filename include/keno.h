@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <fstream>
+#include "tools.h"
 #include <string>
 #include <algorithm>
 #include <sstream>

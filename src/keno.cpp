@@ -29,6 +29,15 @@ void keno::shuffle_keno(){
 	for( auto i = 0 ; i < 20 ; i++){
 		keno_chosen[i] = keno_table[i];
 	}
+	qsort( keno_chosen, keno_chosen+20);
+
+	//std::cout << "Numeros escolhidos [ ";
+
+	//for( auto i = 0 ; i < 20 ; i++){
+	//std::cout << keno_chosen[i] << " ";
+	//}
+
+	//std::cout << "]" << "\n";
 
 }
 

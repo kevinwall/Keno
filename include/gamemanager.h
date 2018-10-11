@@ -2,8 +2,8 @@
 #define GAMAMANAGER_H_
 
 #include "keno.h"
-#include "keno.h"
 #include "Player.h"
+#include "tools.h"
 #include <vector>
 
 class gamemanager{
@@ -11,8 +11,10 @@ public:
 
 	int comparate_bet( Player& player_, keno& keno_);
 	bool linear_search_keno( int n , const int * , const int * );
-	float balance( Player& player_, keno& keno_);
-	float get_bet_money(Player& player_, int number_of_bet);
+	void balance( Player& player_, keno& keno_);
+	void get_bet_money(Player& player_, int number_of_bet);
+	void qsort( int* bet, size_t count);
+	void print_table(Player& player_);
 private:
 	std::vector<std::vector<float>> payout_table = {
 		{ 0,   3 }, // 1 spot
