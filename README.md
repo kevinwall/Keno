@@ -22,7 +22,13 @@ Esta classe é responsável por guardar os dados do jogador (dinheiro e aposta) 
 
 # Compilação e execução: #
 
-TODO: makefile
+Para compilar o código basta digitar o comando **make** e logo após, basta digitar **./Keno arquivo-de-entrada** onde o arquivo de entrada segue o formato: <br />
+
+M<br/>
+NB<br/>
+A B C D...<br/>
+
+Onde **M** é o dinheiro inicial do jogador, **NB** é a quantidade de apostas e **A B C D...** são os números que o jogador deseja apostar
 
 # Autoria: #
 
